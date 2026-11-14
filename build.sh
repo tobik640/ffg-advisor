@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
+
+# The previous v0.3 payload is deliberately retained in git for rollback.
 mkdir -p dist/assets
-cat payload/index.html.gz.b64.part* | base64 -d | gzip -dc > dist/index.html
-# Use the SVG app icon for Apple touch icon; keep the published bundle self-contained.
+base64 -d payload/index.v04.html.gz.b64 | gzip -dc > dist/index.html
+# Keep the install icon consistent with the committed assets.
 sed -i 's#./assets/icon-192.png#./assets/icon.svg#g' dist/index.html
-cp manifest.webmanifest sw.js dist/
-cp assets/icon.svg dist/assets/icon.svg
-echo "FFG Advisor build complete"
+
+cp advisor-v04.js manifest.webmanifest sw.js dist/
+cp assets/icon.svg assets/icon-192.png assets/icon-512.png dist/assets/
+echo "FFG Advisor v0.4 build complete"

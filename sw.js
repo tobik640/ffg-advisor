@@ -1,18 +1,35 @@
-const CACHE = 'ffg-advisor-calc-v3';
-const ASSETS = ['./', './index.html', './manifest.webmanifest', './assets/icon.svg'];
-self.addEventListener('install', event => {
-  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)));
+/* Versioned app shell. Never cache uploads or non-same-origin responses. */
+const CACHE='ffg-advisor-v4-20261115';
+const ASSETS=['./','./index.html','./advisor-v04.js','./manifest.webmanifest','./assets/icon.svg'];
+
+self.addEventListener('install',event=>{
+  event.waitUntil(caches.open(CACHE).then(async cache=>{
+    await Promise.all(ASSETS.map(async path=>{
+      try{await cache.add(path);}catch(e){console.warn('FFG asset could not be precached:',path);}
+    }));
+  }));
   self.skipWaiting();
 });
-self.addEventListener('activate', event => {
-  event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE).map(key => caches.delete(key)))));
+
+self.addEventListener('activate',event=>{
+  event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>
+    key.startsWith('ffg-advisor-')&&key!==CACHE).map(key=>caches.delete(key)))));
   self.clients.claim();
 });
-self.addEventListener('fetch', event => {
-  if (event.request.method !== 'GET') return;
-  event.respondWith(caches.match(event.request).then(cached => cached || fetch(event.request).then(response => {
-    const copy = response.clone();
-    caches.open(CACHE).then(cache => cache.put(event.request, copy));
+
+self.addEventListener('fetch',event=>{
+  const request=event.request;
+  if(request.method!=='GET'||new URL(request.url).origin!==self.location.origin)return;
+  const isDocument=request.mode==='navigate'||/\/(index\.html|advisor-v04\.js)$/.test(new URL(request.url).pathname);
+  if(isDocument){
+    event.respondWith(fetch(request).then(response=>{
+      if(response.ok){const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(request,copy));}
+      return response;
+    }).catch(()=>caches.match(request).then(cached=>cached||caches.match('./index.html'))));
+    return;
+  }
+  event.respondWith(caches.match(request).then(cached=>cached||fetch(request).then(response=>{
+    if(response.ok){const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(request,copy));}
     return response;
-  }).catch(() => caches.match('./index.html'))));
+  })));
 });
