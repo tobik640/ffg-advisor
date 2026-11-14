@@ -1,0 +1,14 @@
+{
+  "name": "FFG Advisor",
+  "short_name": "FFG Advisor",
+  "description": "Finanční kalkulačky pro české finanční poradce.",
+  "lang": "cs-CZ",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#090909",
+  "theme_color": "#090909",
+  "icons": [
+    { "src": "./assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
