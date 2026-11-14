@@ -1,0 +1,19 @@
+name: Build check
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build static app
+        run: bash build.sh
+      - name: Verify built app
+        run: |
+          test -s dist/index.html
+          grep -q "FFG Advisor" dist/index.html
+          test -s dist/manifest.webmanifest
+          test -s dist/sw.js
+          test -s dist/assets/icon.svg
