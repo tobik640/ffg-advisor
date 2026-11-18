@@ -1,4 +1,4 @@
-# FFG Advisor · v0.6
+# FFG Advisor · v0.7
 
 Přehledná statická pracovní aplikace pro české finanční poradenství. Výpočty DPS,
 DIP, investic, vkladů, hypoték, potřeb pojistného krytí a porovnání variant,
@@ -11,22 +11,28 @@ na žádost vlastníka kompletně vyřazeny z uživatelského rozhraní a nasaze
 - **Build command:** `bash build.sh`.
 - **Deploy command:** `npx wrangler deploy --assets ./dist`.
 - Konfigurace: `wrangler.jsonc` (name, compatibility_date, assets.directory).
-- `build.sh` vytváří `dist/` z uloženého komprimovaného HTML a kopíruje JS,
+- `build.sh` vytváří `dist/` z přímo upravitelného `index.html` a kopíruje JS,
   manifest, service worker a všechny ikony.
-- Historický payload v0.3 v `payload/index.html.gz.b64.part*` zůstává v Gitu
-  jako kontrolní bod. Nový je `payload/index.v06.html.gz.b64`.
+- Historické komprimované payloady zůstávají v Gitu jako kontrolní body;
+  aktuální vydání už není potřeba komprimovat při úpravách.
 
 ## Vývoj
 
-Vývojový zdroj pro v0.6 je `index.html` a modulární soubory
-`advisor-v05.js`, `charts-v05.js`, `workspace-v06.js`, `redesign-v06.css`.
+Vývojový zdroj pro v0.7 je `index.html` a modulární soubory
+`advisor-v05.js`, `charts-v05.js`, `workspace-v06.js`, `redesign-v06.css`,
+`rate-products-v07.js` a `range-controls-v07.js`.
 Redesign zachovává černo-zlatou identitu, ale používá světlou pracovní plochu,
 kontrastní tmavé grafy, přehlednější vstupy a čitelnější výsledky. Obsahuje
 rychlou navigaci Ctrl/⌘+K a přepracovaný dashboard.
-Grafy mají interaktivní tooltip a režim zvětšení, zobrazují klientovy vklady,
+Grafy mají interaktivní tooltip, volitelné řady, posuvník času a režim zvětšení; zobrazují klientovy vklady,
 zaměstnavatelské a státní příspěvky, scénáře, poplatky i inflaci podle typu
 výpočtu. Model investičního nástroje synchronizuje výnosové a nákladové vstupy.
-Starší důchodové moduly zůstávají v historických revizích repozitáře pro
+Výběr banky a produktu vyplňuje konkrétní sazbu, další úroková pásma a
+podmínky s odkazem na primární zdroj. Spořicí účty se liší podle nároku
+na bonus; ruční úprava sazby přepne produkt do vlastního scénáře. Výběr
+hypoteční banky použije pouze datovanou referenční sazbu „od“, nenahrazuje
+individuální nabídku banky. Číselné vstupy zůstávají editovatelné vedle
+posuvníků. Starší důchodové moduly zůstávají v historických revizích repozitáře pro
 rollback, ale už nejsou dostupné uživatelům na stránce.
 
 ## Kontrolní scénáře
@@ -47,8 +53,11 @@ Nejde o produkční klientský informační systém. **Není přihlášení, opr
 auditní stopa, databáze ani serverové zabezpečení klientských dokumentů.**
 Proto zde nezadávat reálné osobní, zdravotní nebo finanční údaje klientů.
 
-Sazby a finanční produkty jsou **datovaný snapshot k 14. 11. 2026**, nikoli živý
-cenový feed. Právní parametry se mohou měnit. Vzorce jsou orientační;
+Spořicí sazby byly naposledy porovnány s veřejnými informacemi institucí
+**18. 11. 2026**, hypoteční sazby zůstávají orientačním přehledem k 13. 11. 2026.
+**Nejde o živý cenový feed ani automaticky aktualizované sazby.** Po uplynutí
+14 dní aplikace vyznačí nutnost nového ověření. Právní parametry se mohou
+měnit. Vzorce jsou orientační;
 pro hypoteční sazby, investiční produkty a pojistná krytí je rozhodující
 skutečná nabídka poskytovatele. Všechna zhodnocení zůstávají hypotetická.
 Před nasazením do práce s klienty je nutné nezávislé odborné ověření pravidel,

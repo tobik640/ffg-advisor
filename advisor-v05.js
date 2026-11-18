@@ -208,7 +208,7 @@
         {name:'Před zdaněním úroků',values:grossChart}],chart.map((_,i)=>i===0?'Start':i+' m.'),'Vývoj spoření a klientských vkladů')+'</div>'+
       notification(selected?safe(selected.bank+' · '+selected.product+': '+selected.condition):
         'Používají se ručně nastavené úrokové pásmo a sazba nad limitem.')+
-      notification('Sazby jsou pouze datovaný snapshot z 14. 11. 2026. Model používá nominální sazbu p.a. a zjednodušené měsíční připisování; skutečná banka může úročit denně, sazbu měnit, požadovat aktivitu nebo mít speciální podmínky. U termínovaných vkladů se režim liší.');
+      notification('Sazby jsou datovaný přehled veřejných nabídek'+(window.FFGRateCatalog?' ověřovaný k '+window.FFGRateCatalog.verified:'')+'. Nejde o živé napojení na banku. Model používá nominální sazbu p.a. a zjednodušené měsíční připisování; skutečná banka může úročit denně, sazbu měnit, požadovat aktivitu nebo mít speciální podmínky. Při delším horizontu se sazba může změnit.');
   };
 
   const pmt=(balance,r,term)=>term<=0?0:r===0?balance/term:balance*r/(1-Math.pow(1+r,-term));
