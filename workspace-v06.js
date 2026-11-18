@@ -61,11 +61,11 @@
   const sidebar=$('sidebar');
   const sideNote=sidebar.querySelector('.side-note');
   if(sideNote)sideNote.innerHTML='<div class="rail-status">Pracovní režim</div><br><br><b>FFG Advisor</b><br>Nezávislé modelové výpočty s vysvětlenými předpoklady. Sazby vždy ověř u poskytovatele.';
-  const foot=sidebar.querySelector('.side-foot');if(foot)foot.textContent='FFG · FINANČNÍ NÁSTROJE · V0.7';
+  const foot=sidebar.querySelector('.side-foot');if(foot)foot.textContent='FFG · FINANČNÍ NÁSTROJE · V0.8';
   const brandSub=sidebar.querySelector('.brand-sub');if(brandSub)brandSub.textContent='ADVISOR WORKSPACE';
-  document.title='FFG Advisor · poradenské studio v0.7';
+  document.title='FFG Advisor · poradenské studio v0.8';
   const footer=document.querySelector('.content > .footer-note');
-  if(footer)footer.innerHTML='FFG Advisor · v0.7 · Orientační finanční modely, nikoli závazné nabídky nebo automatická doporučení. Bankovní produktová data byla naposledy ověřena 18. 11. 2026 a nejsou živým cenovým feedem. Nezadávej citlivé klientské údaje: aplikace nemá zabezpečenou klientskou databázi ani správu přístupů.';
+  if(footer)footer.innerHTML='FFG Advisor · v0.8 · Orientační finanční modely, nikoli závazné nabídky nebo automatická doporučení. Spořicí sazby: poslední ověření '+(window.FFGRateCatalog?.verified||'nezjištěno')+'. Automatická měsíční kontrola nezaručuje neměnnou sazbu; vždy ověř konkrétní nabídku. Nezadávej citlivé klientské údaje: aplikace nemá zabezpečenou klientskou databázi ani správu přístupů.';
 
   const cards=tools.map(tool=>'<button class="tool-card" type="button" data-open-view="'+tool.id+'" aria-label="Otevřít '+tool.name+'">'+
     '<div class="tool-card-head"><span class="tool-icon">'+svg(tool.id)+'</span><span class="tool-arrow" aria-hidden="true">'+svg('arrow')+'</span></div>'+

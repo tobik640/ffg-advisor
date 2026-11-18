@@ -5,6 +5,10 @@
  'use strict';
  const $=id=>document.getElementById(id);
  const verified='18. 11. 2026';
+ const parseDate=date=>{
+  const parts=String(date).match(/(\d{1,2})\.\s*(\d{1,2})\.\s*(20\d{2})/);
+  return parts?Date.UTC(Number(parts[3]),Number(parts[2])-1,Number(parts[1])):0;
+ };
  const products=[
   {id:'creditas-bonus',bankId:'creditas',bank:'Banka CREDITAS',product:'Spořicí účet TOP · bonus 4,60 %',rate:4.60,limit:500000,above:3.30,bands:[{upTo:500000,rate:4.60},{upTo:null,rate:3.30}],condition:'Bonus do 500 000 Kč vyžaduje aktivní používání účtu nebo investice. Bez podmínek nelze bonusovou sazbu automaticky předpokládat.',url:'https://www.creditas.cz/blog/na-sporicim-uctu-top-nove-ziskate-az-46-rocne',source:'Banka CREDITAS · listopad 2026'},
   {id:'trinity-narozeniny',bankId:'trinity',bank:'TRINITY BANK',product:'Narozeninový Skvělý účet · nový vklad',rate:4.28,limit:500000,above:3.30,bands:[{upTo:500000,rate:4.28},{upTo:null,rate:3.30}],condition:'Akční nabídka pro nový vklad s omezeným objemem. Banka uvádí garanci sazby do 31. 3. 2027; pro delší horizont jde jen o scénář.',url:'https://trinitybank.cz/aktuality/zvysujeme-sazbu-4-28-pa-na-500-000-kc',source:'TRINITY BANK · říjen 2026'},
@@ -43,7 +47,7 @@
   const line=document.createElement('div');line.className='product-context-row';
   const name=document.createElement('strong');name.textContent=(hypo?'Referenční nabídka · ':'Produkt · ')+product.bank;
   const tag=document.createElement('span');tag.className='rate-verified';
-  const stale=(Date.now()-Date.UTC(2026,10,hypo?13:18))/86400000>14;
+  const stale=(Date.now()-parseDate(hypo?'13. 11. 2026':verified))/86400000>14;
   tag.textContent=(hypo?'Referenční sazba 13. 11. 2026':'Ověřeno '+verified)+(stale?' · znovu ověřit':'');
   if(stale)tag.classList.add('rate-stale');
   line.append(name,tag);box.append(line);

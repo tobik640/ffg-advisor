@@ -42,6 +42,9 @@
     return '<div class="ffg-chart" data-chart-id="'+id+'"><div class="ffg-chart-tools"><div class="ffg-chart-help">Klikni na řady v legendě • posuvníkem vyber období • najeď myší pro hodnoty</div><button class="btn secondary small" type="button" data-chart-expand="1" aria-label="Zvětšit interaktivní graf">⤢ Zvětšit graf</button></div><div class="ffg-chart-surface">'+markup+'<div class="ffg-chart-tooltip" hidden></div></div><div class="ffg-chart-legend" aria-label="Zobrazené křivky grafu">'+legend+'</div><label class="ffg-chart-scrub-label">Zvolené období <input class="ffg-chart-scrubber" aria-label="Vybrat období na grafu" type="range" min="0" max="'+(length-1)+'" value="0" step="1"><output class="ffg-chart-scrub-value">'+esc(ticks[0])+'</output></label></div>';
   }
   window.lineChart=buildChart;
+  // Expose only a read model for the advisor's chart/table switcher. The
+  // canonical series and visibility preferences remain inside this module.
+  window.FFGChartData={get:id=>data.get(id)||null};
 
   function hover(chart,index){
     const item=data.get(chart.dataset.chartId),svg=chart.querySelector('svg');if(!item||!svg)return;

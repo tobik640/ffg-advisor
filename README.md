@@ -1,4 +1,4 @@
-# FFG Advisor · v0.7
+# FFG Advisor · v0.8
 
 Přehledná statická pracovní aplikace pro české finanční poradenství. Výpočty DPS,
 DIP, investic, vkladů, hypoték, potřeb pojistného krytí a porovnání variant,
@@ -18,12 +18,17 @@ na žádost vlastníka kompletně vyřazeny z uživatelského rozhraní a nasaze
 
 ## Vývoj
 
-Vývojový zdroj pro v0.7 je `index.html` a modulární soubory
+Vývojový zdroj pro v0.8 je `index.html` a modulární soubory
 `advisor-v05.js`, `charts-v05.js`, `workspace-v06.js`, `redesign-v06.css`,
-`rate-products-v07.js` a `range-controls-v07.js`.
-Redesign zachovává černo-zlatou identitu, ale používá světlou pracovní plochu,
-kontrastní tmavé grafy, přehlednější vstupy a čitelnější výsledky. Obsahuje
+`rate-products-v07.js`, `range-controls-v07.js`, `workspace-v08.js`
+a `redesign-v08.css`.
+Redesign zachovává černo-zlatou identitu, ale používá tmavě petrolejovou pracovní plochu,
+kontrastní grafy, přehlednější vstupy a čitelnější výsledky. Obsahuje
 rychlou navigaci Ctrl/⌘+K a přepracovaný dashboard.
+Každá kalkulačka má jednotný pruh pěti hlavních výsledků, jednoduché základní
+vstupy, rozbalovací pokročilá nastavení a převážně širší prostor pro výsledky.
+Grafy lze přepnout na tabulku všech modelových období. Vhodné kalkulačky
+obsahují i koláčový rozklad vkladů a výnosu, s vynecháním negativního rozkladu.
 Grafy mají interaktivní tooltip, volitelné řady, posuvník času a režim zvětšení; zobrazují klientovy vklady,
 zaměstnavatelské a státní příspěvky, scénáře, poplatky i inflaci podle typu
 výpočtu. Model investičního nástroje synchronizuje výnosové a nákladové vstupy.
@@ -55,8 +60,13 @@ Proto zde nezadávat reálné osobní, zdravotní nebo finanční údaje klient�
 
 Spořicí sazby byly naposledy porovnány s veřejnými informacemi institucí
 **18. 11. 2026**, hypoteční sazby zůstávají orientačním přehledem k 13. 11. 2026.
-**Nejde o živý cenový feed ani automaticky aktualizované sazby.** Po uplynutí
-14 dní aplikace vyznačí nutnost nového ověření. Právní parametry se mohou
+**Nejde o živý cenový feed.** Je vytvořena samostatná ChatGPT automatizace,
+která se každý měsíc pokusí ověřit nové sazebníky a bezpečně aktualizovat
+údaje v GitHub repozitáři; první běh se uskuteční 1. 12. 2026.
+Sazba je přepsána pouze po doloženém ověření oficiálního zdroje a úspěšném
+nasazení. Neověřitelné položky zůstanou označené jako staré. Automatizace
+zatím nemá ověřený úspěšný bezobslužný běh a nenahrazuje kontrolu u banky.
+Po uplynutí 14 dní aplikace vyznačí nutnost nového ověření. Právní parametry se mohou
 měnit. Vzorce jsou orientační;
 pro hypoteční sazby, investiční produkty a pojistná krytí je rozhodující
 skutečná nabídka poskytovatele. Všechna zhodnocení zůstávají hypotetická.

@@ -1,0 +1,89 @@
+/* FFG Advisor 0.8 — midnight financial studio.
+   Related to the client's reference in hierarchy, not a visual clone. */
+:root{--bg:#0d161d;--bg2:#101b21;--panel:#16242b;--panel2:#1b2d32;--line:#304349;--gold:#d2a960;--gold2:#edc983;--gold-dim:#c49a58;--text:#e9f1ec;--muted:#a6b8b2;--soft:#d2ddd7;--green:#76c3a7;--shadow:0 14px 35px #02090f30}
+html{color-scheme:dark}
+body{background:#0d161d!important;color:#e9f1ec!important}
+.main{background:radial-gradient(ellipse at 96% 1%,#24403b 0,transparent 27%),#0d161d!important}
+.sidebar{background:linear-gradient(168deg,#0c1419,#13252a 68%,#0a171c);border-color:#253d42}
+.sidebar .nav button.active{background:linear-gradient(115deg,#ddba7e,#cca05b);color:#172923}
+.topbar{background:#101c23ef;border-color:#293a40;box-shadow:0 1px 8px #020b1150}
+.topbar .crumb,.top-date{color:#94a9a7}.topbar .crumb strong{color:#e9eee9}.topbar .shortcut-trigger{background:#182b30!important;border-color:#3a4b4c!important;color:#cad6d0!important}.topbar .shortcut-trigger kbd{background:#223238;color:#d9e0db;border-color:#3d4b4b}
+.topbar .btn.secondary{background:#1c2a30;color:#d6ded7;border-color:#425450}
+.content{max-width:1840px;padding-top:29px}
+.page-head{margin-bottom:23px}.page-title{color:#f2f5ed;font-weight:780}.page-sub{color:#a7b8b4}.eyebrow{color:#dfb775}
+.pill{background:#24342c;border-color:#5b6549;color:#ead4a5}.calc-context{color:#a6beb1}.calc-context>i{background:#254537;border-color:#38584d;color:#a7e5cb}
+.card{background:#152229!important;border-color:#2b4144;box-shadow:0 12px 40px #020b1228}
+.panel{padding:25px}.panel h3{color:#f0f1e8}.panel-intro,.section-intro{color:#91a7a3}
+.calc-layout{grid-template-columns:minmax(290px,.35fr) minmax(420px,.65fr);gap:19px;align-items:start}
+.calc-layout>.card:last-child{background:#152229!important;overflow:visible}
+.form-grid{gap:14px}.form-field label{color:#c6d5cc;font-size:11px}
+.field,input,select,textarea{background:#0f1b23;border-color:#33494a;color:#f5f4ec;box-shadow:none}
+.field:focus,input:focus,select:focus,textarea:focus{background:#12252c;border-color:#d1ad73;box-shadow:0 0 0 3px #dfb7772e}
+.input-suffix span{color:#8fa8a4}.checkline{color:#bacdc1}.form-field input:invalid{border-color:#ce7875}
+.btn{background:linear-gradient(135deg,#ebc987,#cfa263);color:#15211d;border-color:#b99059;box-shadow:0 5px 15px #d8b07213}
+.btn.secondary,.btn.ghost{background:#223137;color:#ead7b2;border-color:#58604d}.btn.secondary:hover,.btn.ghost:hover{background:#2a403f}
+.footnote,.mini,.legal-source{color:#97aba7}
+.calculation-assumption{background:#18352e;border-color:#355748;color:#b5dac7}
+.result-hero{background:linear-gradient(120deg,#1e3531,#15272c);border-color:#456353;box-shadow:none}
+.result-label{color:#d7b779}.result-number{color:#fff}.result-note{color:#b1c7be}
+.result-grid{gap:9px}.result-tile,.kpi{background:#1b2b30;border:1px solid #34494b}.result-tile span,.kpi span{color:#a6b9b1}.result-tile strong,.kpi strong{color:#eef0e8}
+.kpi strong{font-size:16px}
+.notice{background:#2a2c24;border-color:#554e36;color:#e3d7b7}.notice.blue{background:#1a3532;border-color:#345950;color:#bcded3}
+.validation,.danger-note{background:#3a2327;border-color:#91565a;color:#ffbabb}
+.chart-box{background:#111f27;border-color:#355052;padding:22px 20px;margin-top:0;box-shadow:inset 0 1px 0 #ffffff0b}
+.chart-title{font-size:16px;color:#f4e5c8;font-weight:700;margin-bottom:13px}.ffg-chart-help{color:#9eb5ac}.ffg-chart-tools .btn.secondary{background:#263b3e;border-color:#576a61;color:#ecd6ab}
+.ffg-chart-surface svg{display:block;width:100%;min-height:290px}.ffg-chart-tooltip{background:#203238f7;border-color:#b18b54}
+.ffg-series-toggle{border-color:#47605f}.ffg-series-toggle:hover{background:#304b4a}.ffg-legend-item{color:#e1e9df}
+.ffg-slider-caption{color:#91a9a1}.ffg-slider-caption output{color:#e3c085}.ffg-slider input[type=range]{background:linear-gradient(90deg,#cda66c var(--progress),#3b5352 var(--progress))}.ffg-slider input[type=range]::-webkit-slider-thumb{background:#f4ebd6;border-color:#cda66c;box-shadow:0 2px 8px #0005}.ffg-slider-limits{color:#7f9892}
+.product-context{background:#1b3330;border-color:#3d5d52;color:#d1e2d9}.product-context-row strong{color:#f6eddb}.rate-verified{background:#294d3a;color:#bdedcb}.rate-verified.rate-stale{background:#513d27;color:#f7d7a7}.product-context a{color:#f0cd91}.rate-band-row span{background:#213f36;border-color:#467159;color:#e2f0e1}
+.market-table th,.data-table th{background:#192e33;color:#c9d6cc;border-bottom:1px solid #365351}.market-table td,.data-table td{color:#d1e1d7;border-color:#2c4949}.market-table tbody tr:hover,.data-table tbody tr:hover{background:#233638}.rate,.market-card .perf{color:#e5bd79}
+.market-card{background:#18282e;border-color:#334c4b;box-shadow:none}.market-card h4{color:#f2f0e6}.market-card p{color:#a2b6ac}.source-link{color:#edc78c}.source-link:hover{color:#fff0cd}
+.subtab,.calc-tab{background:#18292e;border-color:#3a5350;color:#c0d1c6}.subtab.active,.calc-tab.active{background:#cba565;color:#1c2a27;border-color:#dfc087}
+.footer-note{border-color:#2c4545;color:#91a5a0}.data-snapshot{background:#2a3029;border-color:#615337;color:#e4d6b6}
+.dashboard-section-header h2{color:#f5f1e8}.dashboard-section-header p{color:#9ab2a7}.dashboard-section-header .section-count{background:#26362f;color:#e5c48b;border-color:#625e42}
+.tool-card{background:#17272e;color:#e8f0e8;border-color:#35514e;box-shadow:0 5px 20px #02090d33}.tool-card:hover,.tool-card:focus-visible{border-color:#caa56e;box-shadow:0 15px 30px #02090d66}
+.tool-icon{background:#2a382e;border-color:#776346;color:#edc886}.tool-arrow{color:#c0ac83}.tool-card strong{color:#f4f2e9}.tool-card p{color:#a5b6af}.tool-card .tool-meta{color:#d9b875}
+.workflow-note>div{background:#192c30;border-color:#3a4f4d}.workflow-note>div>span{background:#35402e;color:#efcc8e}.workflow-note strong{color:#e7eee6}.workflow-note p{color:#9bb1a6}
+.ffg-search-panel{background:#172930;border-color:#45605a}.ffg-search-top{border-color:#39504d}.ffg-search-top input{color:#f1f2eb}.ffg-search-top button{background:#243c3e;color:#d8e0d7;border-color:#3d5e55}.ffg-search-result{color:#dfe9dd}.ffg-search-result:hover,.ffg-search-result.selected{background:#30463c}.ffg-search-result small,.ffg-search-foot{color:#9fb1a8}.ffg-search-foot{border-color:#38514c}
+
+/* Answer-first cards are the visual entry point on every calculator. */
+.ffg-v08-summary{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:11px;margin-bottom:18px}
+.ffg-v08-summary-card{min-width:0;min-height:105px;padding:18px 17px;border:1px solid #36504f;border-radius:15px;background:linear-gradient(140deg,#192a31,#17252c);box-shadow:0 6px 17px #040d142b;display:flex;flex-direction:column;justify-content:space-between;gap:12px}
+.ffg-v08-summary-card.primary{background:linear-gradient(125deg,#3a3329,#273831);border-color:#91784d;box-shadow:inset 0 1px 0 #ffffff14,0 8px 22px #060d113b}
+.ffg-v08-metric-label{font-size:10px;letter-spacing:.04em;text-transform:uppercase;color:#a6bcb5;font-weight:760;line-height:1.45}
+.ffg-v08-metric-value{font-size:clamp(17px,1.5vw,25px);font-weight:790;color:#eaf4e8;letter-spacing:-.045em;font-variant-numeric:tabular-nums;overflow-wrap:anywhere;line-height:1.15}
+.ffg-v08-summary-card.primary .ffg-v08-metric-label{color:#d9c595}.ffg-v08-summary-card.primary .ffg-v08-metric-value{color:#f8d898}
+.ffg-v08-input-hint{font-size:11px;color:#8fa9a3;margin:13px 0 0;line-height:1.6}
+.ffg-v08-advanced{grid-column:1/-1;border:1px solid #3e5551;border-radius:13px;background:#122229;overflow:hidden}
+.ffg-v08-advanced>summary{display:flex;align-items:center;gap:10px;padding:14px 15px;color:#e1cb9a;font-weight:770;font-size:12px;cursor:pointer;list-style-position:inside}
+.ffg-v08-advanced>summary::marker{color:#d5b072}.ffg-v08-advanced[open]>summary{border-bottom:1px solid #3b5451;background:#1a3033}
+.ffg-v08-advanced-count{margin-left:auto;font-size:10px;font-weight:600;color:#8fa89b}
+.ffg-v08-advanced-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;padding:15px}
+.ffg-v08-advanced-grid .form-field.full{grid-column:1/-1}
+
+/* Graph/table view switcher and contribution breakdown. */
+.ffg-v08-viz-toggle{display:inline-flex;align-items:center;gap:3px;background:#1c3136;border:1px solid #45605c;border-radius:12px;padding:4px;margin:1px 0 16px}
+.ffg-v08-viz-button{border:0;background:transparent;color:#aebfb9;font-size:12px;font-weight:750;padding:9px 14px;border-radius:9px;cursor:pointer;min-height:unset}
+.ffg-v08-viz-button.active{background:#d0ad71;color:#172624;box-shadow:0 3px 13px #0004}.ffg-v08-viz-button:focus-visible{outline:2px solid #f4d8a1;outline-offset:2px}
+.ffg-v08-chart-wrap[hidden],.ffg-v08-table-view[hidden]{display:none!important}
+.ffg-v08-table-view{max-height:490px;overflow:auto;border:1px solid #3b5252;border-radius:12px;scrollbar-color:#5f736e #15262a}
+.ffg-v08-series-table{border-collapse:collapse;width:100%;min-width:550px;font-size:12px;font-variant-numeric:tabular-nums}
+.ffg-v08-series-table th{text-align:right;background:#243a3e;color:#d4e1d5;position:sticky;top:0;z-index:1;padding:14px 12px;font-size:10px;text-transform:uppercase;letter-spacing:.04em}
+.ffg-v08-series-table th:first-child,.ffg-v08-series-table td:first-child{text-align:left}
+.ffg-v08-series-table td{text-align:right;padding:12px;color:#dce8df;border-top:1px solid #30484a;white-space:nowrap}
+.ffg-v08-series-table tbody tr:nth-child(even){background:#182a30}.ffg-v08-series-table tbody tr:hover{background:#2b4444}
+.ffg-v08-result-details{background:#1b2a30;border:1px solid #3b5550;border-radius:12px;margin-top:14px;overflow:hidden}
+.ffg-v08-result-details>summary{font-weight:750;font-size:12px;color:#e6cf9f;padding:15px;cursor:pointer}
+.ffg-v08-result-details[open]>summary{border-bottom:1px solid #3e5753}.ffg-v08-result-detail-body{padding:17px}
+.ffg-v08-breakdown{padding:20px 0 0;margin-top:20px;border-top:1px solid #3d5550}
+.ffg-v08-breakdown h4{color:#f3ead7;font-size:14px;font-weight:750;margin:0}.ffg-v08-breakdown p{color:#9badab;font-size:11px;margin:5px 0 0}
+.ffg-v08-breakdown-layout{display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:center;max-width:720px;margin-top:17px}
+.ffg-v08-donut{width:190px;height:190px;border-radius:50%;display:grid;place-items:center;position:relative;box-shadow:0 8px 22px #0005}
+.ffg-v08-donut-core{height:128px;width:128px;border-radius:50%;background:#13262d;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:3px;box-shadow:inset 0 0 0 1px #344743}
+.ffg-v08-donut-core span{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:#9bb5a9}.ffg-v08-donut-core strong{font-size:17px;color:#f1dbb0;text-align:center;line-height:1.25}
+.ffg-v08-breakdown-list{display:flex;flex-direction:column;gap:14px}
+.ffg-v08-breakdown-row{display:flex;align-items:center;gap:9px;font-size:12px;color:#bcd0c7}.ffg-v08-breakdown-row i{height:11px;width:11px;border-radius:4px;flex-shrink:0}.ffg-v08-breakdown-row b{margin-left:auto;white-space:nowrap;color:#edf4ed;font-variant-numeric:tabular-nums}
+@media(max-width:1580px){.ffg-v08-summary{grid-template-columns:repeat(3,minmax(0,1fr))}.calc-layout{grid-template-columns:minmax(280px,.4fr) minmax(380px,.6fr)}}
+@media(max-width:1150px){.ffg-v08-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.calc-layout{grid-template-columns:1fr}.ffg-v08-breakdown-layout{grid-template-columns:175px 1fr}.ffg-v08-donut{width:165px;height:165px}.ffg-v08-donut-core{width:110px;height:110px}}
+@media(max-width:680px){.content{padding:20px 15px 55px}.panel{padding:17px}.ffg-v08-summary{gap:8px}.ffg-v08-summary-card{padding:13px;min-height:98px}.ffg-v08-summary-card.primary{grid-column:1/-1}.ffg-v08-metric-value{font-size:19px}.ffg-v08-advanced-grid{grid-template-columns:1fr}.ffg-v08-breakdown-layout{grid-template-columns:1fr}.ffg-v08-donut{margin:0 auto}.chart-box{padding:14px 12px}.ffg-chart-surface svg{min-height:230px}.ffg-v08-breakdown-row{font-size:11px}}
+@media print{.ffg-v08-summary-card{border:1px solid #aaa;background:white!important;color:black!important}.ffg-v08-metric-label,.ffg-v08-metric-value{color:#222!important}.ffg-v08-advanced{display:none}.ffg-v08-viz-toggle{display:none}}
