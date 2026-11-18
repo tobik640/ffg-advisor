@@ -1,6 +1,6 @@
 /* Versioned app shell. Never cache uploads or non-same-origin responses. */
 const CACHE='ffg-advisor-v8-20261118';
-const ASSETS=['./','./index.html','./advisor-v05.js','./charts-v05.js','./redesign-v06.css','./redesign-v08.css','./workspace-v06.js','./workspace-v08.js','./rate-products-v07.js','./range-controls-v07.js','./manifest.webmanifest','./assets/icon.svg'];
+const ASSETS=['./','./index.html','./advisor-v05.js?v=8','./charts-v05.js?v=8','./redesign-v06.css?v=8','./redesign-v08.css','./workspace-v06.js?v=8','./workspace-v08.js','./rate-products-v07.js','./range-controls-v07.js','./manifest.webmanifest','./assets/icon.svg'];
 
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(async cache=>{

@@ -51,7 +51,7 @@
     @media(max-width:760px){.ffg-chart-tools{align-items:flex-start}.ffg-chart-modal{padding:7px}.ffg-chart-modal-content{padding:12px;border-radius:10px}.ffg-chart-modal .ffg-chart-tooltip{font-size:10px}.ffg-legend-item{font-size:10px}}
     @media print{.ffg-chart-tools,.ffg-chart-modal{display:none!important}.ffg-chart-legend{color:#111}.ffg-chart svg{print-color-adjust:exact}}
   </style>
-  <link rel="stylesheet" href="./redesign-v06.css" />
+  <link rel="stylesheet" href="./redesign-v06.css?v=8" />
   <link rel="stylesheet" href="./redesign-v08.css" />
 </head>
 <body>
@@ -438,11 +438,11 @@ bindLive(['proOtherIncome','proBenefits','insurerSelect','insProductType'],calcu
 populateSavingProducts();populateFundChoices();renderMarket();renderAdvancedCatalogs();calculateDps();calculateDip();calculateInvestment();calculateSavings();calculateMortgage();calculateProtection();calculateComparison();
 if('serviceWorker' in navigator && location.protocol.startsWith('http')){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}
 </script>
-<script src="./charts-v05.js"></script>
-<script src="./advisor-v05.js"></script>
+<script src="./charts-v05.js?v=8"></script>
+<script src="./advisor-v05.js?v=8"></script>
 <script src="./rate-products-v07.js"></script>
 <script src="./range-controls-v07.js"></script>
-<script src="./workspace-v06.js"></script>
+<script src="./workspace-v06.js?v=8"></script>
 <script src="./workspace-v08.js"></script>
 </body>
 </html>
