@@ -21,6 +21,20 @@
     {id:'market',name:'Tržní podklady',short:'Trh a produkty',icon:'◉',tag:'KATALOG',
       desc:'Přehled bank, institucí a fondů s odkazy na zdroje.',keys:'banky produkty poskytovatelé sazby fondy katalog'}
   ];
+  // SVGs remain crisp across operating systems without an external icon font.
+  const iconPaths={
+    overview:'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
+    mortgage:'<path d="m3 10 9-7 9 7"/><path d="M5 9v11h14V9"/><path d="M9 20v-7h6v7"/>',
+    investment:'<path d="m3 17 6-6 4 4 8-8"/><path d="M15 7h6v6"/>',
+    savings:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><circle cx="16" cy="16" r="1"/>',
+    dip:'<path d="M12 2 4 6v6c0 5 3 8 8 10 5-2 8-5 8-10V6Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/>',
+    dps:'<circle cx="12" cy="12" r="9"/><path d="M12 6v12M15.5 9.5c-.5-1-1.6-1.5-3.5-1.5-2 0-3 1-3 2.5s1 2 3 2.5c2 .5 3 1 3 2.5S14 18 12 18c-1.9 0-3.1-.7-3.5-1.8"/>',
+    protection:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/>',
+    comparison:'<path d="M4 7h16m-4-4 4 4-4 4M20 17H4m4-4-4 4 4 4"/>',
+    market:'<path d="M3 10 12 3l9 7M5 10v10h14V10M2 21h20M9 13v4m6-4v4"/>',
+    arrow:'<path d="M7 17 17 7M8 7h9v9"/>'
+  };
+  const svg=id=>'<svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+iconPaths[id]+'</svg>';
   const retired=['pension','ioldp-report','disability'];
   const buttons=new Map();
 
@@ -32,8 +46,8 @@
   });
   const nav=document.querySelector('.nav');
   const overviewButton=nav.querySelector('[data-view="overview"]');
-  if(overviewButton)buttons.set('overview',overviewButton);
-  for(const tool of tools){const button=nav.querySelector('[data-view="'+tool.id+'"]');if(button)buttons.set(tool.id,button);}
+  if(overviewButton){buttons.set('overview',overviewButton);overviewButton.querySelector('.nav-icon').innerHTML=svg('overview');}
+  for(const tool of tools){const button=nav.querySelector('[data-view="'+tool.id+'"]');if(button){buttons.set(tool.id,button);button.querySelector('.nav-icon').innerHTML=svg(tool.id);}}
   nav.replaceChildren();
   const addGroup=(label,ids)=>{
     const group=document.createElement('div');group.className='nav-group';group.textContent=label;nav.append(group);
@@ -54,14 +68,14 @@
   if(footer)footer.innerHTML='FFG Advisor · v0.6 · Orientační finanční modely, nikoli závazné nabídky nebo automatická doporučení. Sazby jsou datovaný přehled k 14. 11. 2026. Nezadávej citlivé klientské údaje: aplikace nemá zabezpečenou klientskou databázi ani správu přístupů.';
 
   const cards=tools.map(tool=>'<button class="tool-card" type="button" data-open-view="'+tool.id+'" aria-label="Otevřít '+tool.name+'">'+
-    '<div class="tool-card-head"><span class="tool-icon">'+tool.icon+'</span><span class="tool-arrow" aria-hidden="true">↗</span></div>'+
+    '<div class="tool-card-head"><span class="tool-icon">'+svg(tool.id)+'</span><span class="tool-arrow" aria-hidden="true">'+svg('arrow')+'</span></div>'+
     '<div><strong>'+tool.name+'</strong><p>'+tool.desc+'</p></div><span class="tool-meta">'+tool.tag+'</span></button>').join('');
   const overview=$('view-overview');
   overview.innerHTML=`<section class="dashboard-hero" aria-label="Poradenské studio">
     <div><div class="hero-eyebrow">FINANČNÍ PRACOVNÍ PROSTOR</div>
     <h1>Víc jasno v číslech.<br><em>Méně práce s výpočty.</em></h1>
     <p>Přehledné kalkulačky pro finanční schůzky. Změň vstupy a okamžitě uvidíš, jak se promítají do výsledku, grafu a dalších scénářů.</p>
-    <div class="hero-actions"><button class="btn" data-open-view="mortgage">Spočítat hypotéku ↗</button><button class="btn secondary" data-open-view="investment">Otevřít investice ↗</button></div></div>
+    <div class="hero-actions"><button class="btn" data-open-view="mortgage">Spočítat hypotéku ${svg('arrow')}</button><button class="btn secondary" data-open-view="investment">Otevřít investice ${svg('arrow')}</button></div></div>
     <aside class="hero-brief"><div class="hero-brief-label">PORADENSKÝ REŽIM</div><strong>8 nástrojů.<br>Jeden pracovní prostor.</strong>
     <p>Výsledky zůstávají v prohlížeči. Každá změna je propočítaná a vysvětlená.</p>
     <div class="brief-divider"></div><small>Produktová data jsou orientační · kontrola nabídky nutná</small></aside>
@@ -103,7 +117,7 @@
     const query=searchInput.value.toLocaleLowerCase('cs').trim();
     filtered=tools.filter(t=>(t.name+' '+t.short+' '+t.keys).toLocaleLowerCase('cs').includes(query));
     selected=Math.max(0,Math.min(selected,filtered.length-1));
-    searchResults.innerHTML=filtered.length?filtered.map((t,i)=>'<button class="ffg-search-result'+(i===selected?' selected':'')+'" type="button" data-open-view="'+t.id+'"><span>'+t.icon+'</span>'+t.name+'<small>↗</small></button>').join(''):'<div class="ffg-search-empty">Nenalezeno. Zkus například „hypotéka“ nebo „investice“.</div>';
+    searchResults.innerHTML=filtered.length?filtered.map((t,i)=>'<button class="ffg-search-result'+(i===selected?' selected':'')+'" type="button" data-open-view="'+t.id+'"><span>'+svg(t.id)+'</span>'+t.name+'<small>'+svg('arrow')+'</small></button>').join(''):'<div class="ffg-search-empty">Nenalezeno. Zkus například „hypotéka“ nebo „investice“.</div>';
   }
   function openSearch(){lastFocus=document.activeElement;search.classList.add('open');search.setAttribute('aria-hidden','false');selected=0;searchInput.value='';renderResults();searchInput.focus();}
   function closeSearch(){search.classList.remove('open');search.setAttribute('aria-hidden','true');lastFocus?.focus?.();}
@@ -128,5 +142,12 @@
   const observer=new MutationObserver(()=>document.body.classList.toggle('menu-open',sidebar.classList.contains('open')));
   observer.observe(sidebar,{attributes:true,attributeFilter:['class']});
 
+  // Deep links and the browser's back/forward hash navigation must show the
+  // requested tool, not just change the address bar.
+  window.addEventListener('hashchange',()=>{
+    const requested=location.hash.slice(1);
+    const safe=buttons.has(requested)?requested:'overview';
+    window.go(safe);
+  });
   if(!buttons.has(location.hash.slice(1)))openView('overview');
 })();

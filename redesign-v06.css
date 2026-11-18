@@ -26,6 +26,7 @@ body,button,input,select{font-family:Inter,-apple-system,BlinkMacSystemFont,"Seg
 .nav button.active{background:linear-gradient(110deg,#e4bd78,#d4a861);border:1px solid #f0c985;color:#1a2723;box-shadow:0 8px 22px #e1ad5030}
 .nav button.active .nav-icon{color:#25372f}
 .nav-icon{color:#a0ac9d;font-size:17px;width:22px;line-height:1}
+.nav-icon svg{display:block;width:17px;height:17px}
 .nav-group{font-size:9px;color:#73847c;font-weight:780;text-transform:uppercase;letter-spacing:1.65px;padding:22px 13px 8px}
 .nav-group:first-child{padding-top:0}
 .side-spacer{display:none}
@@ -152,6 +153,8 @@ input[type="checkbox"]{accent-color:#ae8548;min-height:unset}
 .dashboard-hero h1 em{font-style:normal;color:#e8c789}
 .dashboard-hero p{color:#c0d0c6;max-width:570px;font-size:13px;line-height:1.8;margin:0}
 .hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:23px}
+.hero-actions button{display:inline-flex;align-items:center;gap:8px}
+.hero-actions button svg{height:13px;width:13px}
 .hero-actions .btn.secondary{background:#273c31;color:#f2dfb5;border:1px solid #64715a}
 .hero-actions .btn.secondary:hover{background:#334d3f}
 .hero-brief{position:relative;z-index:1;background:#ffffff10;border:1px solid #ffffff24;border-radius:19px;padding:23px;backdrop-filter:blur(9px)}
@@ -170,6 +173,7 @@ input[type="checkbox"]{accent-color:#ae8548;min-height:unset}
 .tool-card-head{display:flex;justify-content:space-between;gap:10px;align-items:center}
 .tool-icon{height:43px;width:43px;display:grid;place-items:center;border:1px solid #e5d9bf;background:#fbf7ee;color:#95703b;border-radius:13px;font-size:20px;font-weight:670}
 .tool-arrow{font-size:20px;color:#b3baaf}
+.tool-arrow svg{width:17px;height:17px;display:block}
 .tool-card strong{font-size:16px;color:#213b33;letter-spacing:-.4px;line-height:1.2;font-weight:810}
 .tool-card p{color:#819087;font-size:11px;line-height:1.7;margin:0;max-width:320px;flex:1}
 .tool-card .tool-meta{color:#a77f40;font-size:10px;font-weight:790;letter-spacing:.15px}
@@ -191,7 +195,9 @@ input[type="checkbox"]{accent-color:#ae8548;min-height:unset}
 .ffg-search-result{display:flex;gap:13px;align-items:center;text-align:left;width:100%;border:0;background:transparent;padding:12px 14px;border-radius:11px;color:#263d31;font-size:13px;font-weight:700}
 .ffg-search-result:hover,.ffg-search-result:focus-visible,.ffg-search-result.selected{background:#f4efe4;outline:0}
 .ffg-search-result span{font-size:19px;color:#9c753b;min-width:25px;text-align:center}
+.ffg-search-result span svg{display:block;width:19px;height:19px}
 .ffg-search-result small{color:#849587;margin-left:auto;font-size:10px}
+.ffg-search-result small svg{width:13px;height:13px}
 .ffg-search-empty{padding:25px;color:#809186;font-size:12px;text-align:center}
 .ffg-search-foot{border-top:1px solid #e8ece8;padding:10px 18px;font-size:10px;color:#92a099}
 .side-overlay{display:none}
