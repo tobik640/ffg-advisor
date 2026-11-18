@@ -563,7 +563,7 @@
   const models={dps:window.calculateDps,dip:window.calculateDip,
     investment:window.calculateInvestment,savings:window.calculateSavings,
     mortgage:window.calculateMortgage,protection:window.calculateProtection,
-    pension:window.calculatePensionAdvanced,disability:window.calculateDisability,comparison:window.calculateComparison};
+    comparison:window.calculateComparison};
   const groups={
     dps:['dpsOwn','dpsEmployer','dpsYears','dpsReturn','dpsFee','dpsAge','dpsInitial','dpsInflation','dpsOtherTax','dpsEmployerUsed','dpsTaxRate','dpsEligible','dpsRetired','dpsCompany'],
     dip:['dipInitial','dipMonthly','dipEmployer','dipReturn','dipFee','dipEntry','dipYears','dipAge','dipUsed','dipTax','dipInflation','dipEmployerUsed','dipProvider'],
@@ -571,8 +571,6 @@
     savings:['savInitial','savMonthly','savRate','savMonths','savTax','savLimit','savAboveRate','savingProduct'],
     mortgage:['mortAmount','mortValue','mortRate','mortYears','mortFixYears','mortRateAfter','mortExtra','mortIncome','mortOtherPayments','mortBank'],
     protection:['proDebt','proGap','proOtherIncome','proBenefits','proMonths','proOther','proReserve','proExisting','insurerSelect','insProductType'],
-    pension:['penOvz','penYears','penFutureYears','penFutureMode'],
-    disability:['invAge','invDegree','invLast10','invLast20','invCovered','invStudy','invElapsed','invRefAge','invOvz','invPastYears','invWorkAccident','invYouth','invIntentional'],
     comparison:['cmpMonthly','cmpYears','cmpInitial','cmpNameA','cmpNameB','cmpReturnA','cmpReturnB','cmpFeeA','cmpFeeB','cmpEntryA','cmpEntryB']
   };
   const lookup={};
@@ -657,6 +655,7 @@
   Object.values(models).forEach(fn=>fn());
   if($('reportOvz'))$('reportOvz').value=$('penOvz').value;
   if($('reportYears'))$('reportYears').value=$('penYears').value;
-  window.go(['overview','dps','dip','investment','savings','mortgage','protection','pension','ioldp-report','disability','comparison','market'].includes(location.hash.slice(1))?location.hash.slice(1):'overview');
+  window.go(['overview','dps','dip','investment','savings','mortgage','protection','comparison','market'].includes(location.hash.slice(1))?location.hash.slice(1):'overview');
   renderIoldpReport();
 })();
+
