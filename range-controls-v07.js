@@ -26,11 +26,20 @@
     const val=Number(number.value);if(!Number.isFinite(val))return;
     if(val>Number(range.max)){range.max=String(Math.ceil(val/step)*step);limits.lastElementChild.textContent=nf.format(Number(range.max))+' '+unit;}
     if(val<Number(range.min)){range.min=String(Math.floor(val/step)*step);limits.firstElementChild.textContent=nf.format(Number(range.min))+' '+unit;}
+    // Keep the thumb exactly aligned with manually entered values, even when
+    // they fall between the slider's preset increments (e.g. 4.89 %).
+    const onStep=Math.abs((val-Number(range.min))/step-Math.round((val-Number(range.min))/step))<1e-7;
+    range.step=onStep?String(step):'any';
     range.value=String(val);value.textContent=nf.format(val)+' '+unit;
     const percent=(val-Number(range.min))/(Number(range.max)-Number(range.min)||1)*100;
     range.style.setProperty('--progress',Math.max(0,Math.min(100,percent))+'%');
   }
-  range.addEventListener('input',()=>{number.value=range.value;number.dispatchEvent(new Event('input',{bubbles:true}));sync();});
+  range.addEventListener('input',()=>{
+    // Dragging should still produce friendly, predictable increments.
+    const raw=Number(range.value),snapped=Math.round(raw/step)*step;
+    number.value=String(Number(snapped.toFixed(7)));
+    number.dispatchEvent(new Event('input',{bubbles:true}));sync();
+  });
   number.addEventListener('input',sync);mounted.push(sync);sync();
  }
  window.syncFfgSliders=()=>mounted.forEach(update=>update());

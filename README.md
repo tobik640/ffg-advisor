@@ -1,4 +1,4 @@
-# FFG Advisor · v0.8
+# FFG Advisor · v0.9
 
 Přehledná statická pracovní aplikace pro české finanční poradenství. Výpočty DPS,
 DIP, investic, vkladů, hypoték, potřeb pojistného krytí a porovnání variant,
@@ -18,17 +18,21 @@ na žádost vlastníka kompletně vyřazeny z uživatelského rozhraní a nasaze
 
 ## Vývoj
 
-Vývojový zdroj pro v0.8 je `index.html` a modulární soubory
+Vývojový zdroj pro v0.9 je `index.html` a modulární soubory
 `advisor-v05.js`, `charts-v05.js`, `workspace-v06.js`, `redesign-v06.css`,
 `rate-products-v07.js`, `range-controls-v07.js`, `workspace-v08.js`
-a `redesign-v08.css`.
+a `redesign-v08.css`, dále `workspace-v09.js` a `redesign-v09.css`.
 Redesign zachovává černo-zlatou identitu, ale používá tmavě petrolejovou pracovní plochu,
 kontrastní grafy, přehlednější vstupy a čitelnější výsledky. Obsahuje
 rychlou navigaci Ctrl/⌘+K a přepracovaný dashboard.
-Každá kalkulačka má jednotný pruh pěti hlavních výsledků, jednoduché základní
-vstupy, rozbalovací pokročilá nastavení a převážně širší prostor pro výsledky.
+Každá kalkulačka zobrazuje tři záměrně vybrané klíčové výsledky. Povinné
+ekonomické předpoklady (např. poplatky, věk pro daňovou podporu, sazba po
+fixaci) jsou viditelné, zatímco méně častá nastavení jsou rozbalovací.
+Duplicitní tlačítka přepočtu jsou odstraněna: každá změna okamžitě spustí
+výpočet. Invalidní zadání skryje zastaralý výsledkový souhrn.
 Grafy lze přepnout na tabulku všech modelových období. Vhodné kalkulačky
 obsahují i koláčový rozklad vkladů a výnosu, s vynecháním negativního rozkladu.
+I v režimu tabulky lze vybrat zobrazované řady a exportovat je do CSV.
 Grafy mají interaktivní tooltip, volitelné řady, posuvník času a režim zvětšení; zobrazují klientovy vklady,
 zaměstnavatelské a státní příspěvky, scénáře, poplatky i inflaci podle typu
 výpočtu. Model investičního nástroje synchronizuje výnosové a nákladové vstupy.
@@ -36,8 +40,14 @@ Výběr banky a produktu vyplňuje konkrétní sazbu, další úroková pásma a
 podmínky s odkazem na primární zdroj. Spořicí účty se liší podle nároku
 na bonus; ruční úprava sazby přepne produkt do vlastního scénáře. Výběr
 hypoteční banky použije pouze datovanou referenční sazbu „od“, nenahrazuje
-individuální nabídku banky. Číselné vstupy zůstávají editovatelné vedle
-posuvníků. Starší důchodové moduly zůstávají v historických revizích repozitáře pro
+individuální nabídku banky. Ruční změna sazby či fixace zruší přiřazení
+referenční hypoteční nabídky; ruční změna úroku či pásma zruší výpočet podle
+původního produktu. Číselné vstupy zůstávají editovatelné vedle
+posuvníků, které přesně kopírují i hodnoty mimo svůj obvyklý krok.
+Zjednodušená analýza pojištění řeší pouze finanční potřebu při smrti,
+invaliditě a pracovní neschopnosti. U PN nepřičítá automaticky celý dluh;
+pojišťovna ani její název nemění výpočet ceny.
+Starší důchodové moduly zůstávají v historických revizích repozitáře pro
 rollback, ale už nejsou dostupné uživatelům na stránce.
 
 ## Kontrolní scénáře
@@ -50,6 +60,11 @@ rollback, ale už nejsou dostupné uživatelům na stránce.
 - Žádné položky navigace, dashboardu ani veřejně dostupné obsahové stránky
   nevystavují starobní důchod, invalidní důchod nebo IOLDP.
 - Změna investičního modelu, produktu spoření nebo banky přepočítá související výsledek.
+- Ručně změněná sazba spoření nevypočítává skrytě původní pásma banky.
+- Změna sazby nebo fixace hypotéky zruší vazbu na referenční nabídku.
+- Pokud se úvěr doplatí před fixací, zůstatek po fixaci je 0 Kč.
+- Ručně zadaných 4,89 % se na posuvníku zobrazuje přesně, ne jako 4,90 %.
+- Základní test pojištění v režimu PN nepočítá jednorázové doplacení hypotéky.
 - Negativní vstupy se zviditelní jako chybný údaj, neukládají se tiše jako nula.
 
 ## Odborné a bezpečnostní omezení

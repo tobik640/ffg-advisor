@@ -74,8 +74,12 @@
  }
  savingBank.addEventListener('change',()=>populateSaving(savingBank.value));
  saving.addEventListener('change',applySaving);
- // Global manual-rate editing already changes savingProduct to 'manual'.
- ['savRate','savLimit','savAboveRate'].forEach(id=>$(id).addEventListener('input',()=>source(null)));
+ // A manual override MUST invalidate the selected bank's tier schedule.
+ // Otherwise the UI would show the edited rate while the calculation would
+ // silently continue using the old bank bands.
+ ['savRate','savLimit','savAboveRate'].forEach(id=>$(id).addEventListener('input',()=>{
+  saving.value='manual';source(null);
+ }));
  savingBank.value='manual';populateSaving('manual');
 
  const mortInstitution=$('mortInstitution'),oldMort=$('mortBank');
@@ -93,7 +97,10 @@
  }
  mortInstitution.addEventListener('change',()=>populateMortgage(mortInstitution.value));
  mortSel.addEventListener('change',applyMortgage);
- $('mortRate').addEventListener('input',()=>source(null,true));
+ // A manually changed rate/fixation is no longer the published example offer.
+ ['mortRate','mortFixYears'].forEach(id=>$(id).addEventListener('input',()=>{
+  mortSel.value='manual';source(null,true);
+ }));
  mortInstitution.value='manual';populateMortgage('manual');
  window.FFGRateCatalog={savings:products,mortgage,verified};
 })();

@@ -1,6 +1,6 @@
 /* Versioned app shell. Never cache uploads or non-same-origin responses. */
-const CACHE='ffg-advisor-v8-20261118';
-const ASSETS=['./','./index.html','./advisor-v05.js?v=8','./charts-v05.js?v=8','./redesign-v06.css?v=8','./redesign-v08.css','./workspace-v06.js?v=8','./workspace-v08.js','./rate-products-v07.js','./range-controls-v07.js','./manifest.webmanifest','./assets/icon.svg'];
+const CACHE='ffg-advisor-v9-20261119';
+const ASSETS=['./','./index.html','./advisor-v05.js?v=8','./charts-v05.js?v=8','./redesign-v06.css?v=8','./redesign-v08.css','./redesign-v09.css','./workspace-v06.js?v=8','./workspace-v08.js','./workspace-v09.js','./rate-products-v07.js','./range-controls-v07.js','./manifest.webmanifest','./assets/icon.svg'];
 
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(async cache=>{
@@ -20,7 +20,7 @@ self.addEventListener('activate',event=>{
 self.addEventListener('fetch',event=>{
   const request=event.request;
   if(request.method!=='GET'||new URL(request.url).origin!==self.location.origin)return;
-  const isDocument=request.mode==='navigate'||/\/(index\.html|advisor-v05\.js|charts-v05\.js|redesign-v06\.css|redesign-v08\.css|workspace-v06\.js|workspace-v08\.js|rate-products-v07\.js|range-controls-v07\.js)$/.test(new URL(request.url).pathname);
+  const isDocument=request.mode==='navigate'||/\/(index\.html|advisor-v05\.js|charts-v05\.js|redesign-v06\.css|redesign-v08\.css|redesign-v09\.css|workspace-v06\.js|workspace-v08\.js|workspace-v09\.js|rate-products-v07\.js|range-controls-v07\.js)$/.test(new URL(request.url).pathname);
   if(isDocument){
     event.respondWith(fetch(request).then(response=>{
       if(response.ok){const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(request,copy));}

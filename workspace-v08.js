@@ -88,7 +88,8 @@
    const own=value('Vlastní vklady'),employer=value('Zaměstnavatel'),state=value('Státní příspěvky'),gain=value('Zhodnocení po nákladech');
    const initial=Number(document.getElementById('dpsInitial')?.value||0);
    if([own,employer,state,gain].every(n=>n!==null&&n>=0))return[
-    {label:'Vklady klienta',amount:own+Math.max(0,initial)},
+    {label:'Vlastní nové vklady',amount:own},
+    {label:'Počáteční zůstatek',amount:Math.max(0,initial)},
     {label:'Zaměstnavatel',amount:employer},{label:'Státní podpora',amount:state},{label:'Zhodnocení',amount:gain}];
   }
   if(key==='mortgage'){

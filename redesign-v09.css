@@ -1,0 +1,91 @@
+/* FFG Advisor 0.9 — fewer decisions per screen, legible from an advisory desk.
+   It intentionally overrides the compressed typography of the older shell. */
+body{font-size:15px;line-height:1.56}
+.content{max-width:1600px}
+.page-title{font-size:clamp(27px,2.35vw,38px);line-height:1.18;letter-spacing:-.025em}
+.page-sub,.panel-intro,.section-intro{font-size:14px;line-height:1.65;max-width:75ch}
+.eyebrow,.nav-label,.nav-group,.hero-eyebrow{font-size:11px;letter-spacing:.1em}
+.nav button{font-size:14px;line-height:1.35;padding:12px 15px}
+.brand-sub,.brand-name{letter-spacing:normal}
+.side-note,.side-foot{font-size:12px;line-height:1.6}
+.crumb,.top-date,.top-actions,.pill{font-size:12px}
+.page-head{margin-bottom:19px}
+.calc-context{font-size:13px;margin-bottom:15px}
+.calc-context i{font-size:12px}
+.calc-layout{grid-template-columns:minmax(310px,.39fr) minmax(440px,.61fr);gap:18px}
+.panel{padding:23px}
+.panel h3{font-size:19px;letter-spacing:-.015em;margin:0 0 10px}
+.form-grid{gap:16px 12px}
+.form-field label{font-size:13px;line-height:1.42;color:#d8e6dd;font-weight:680}
+.form-field input,.form-field select,.form-field textarea{font-size:15px;min-height:46px;padding:11px 12px}
+.form-field .input-suffix input{padding-right:48px}
+.input-suffix span{font-size:12px;right:13px;top:12px}
+.checkline{font-size:14px;line-height:1.45;gap:10px}
+.checkline input{width:18px;height:18px;min-height:auto;flex-shrink:0}
+.btn,.subtab,.calc-tab{font-size:14px;min-height:41px}
+.btn.small{font-size:12px;min-height:34px}
+.footnote,.notice,.calculation-assumption,.data-snapshot,.product-context,.source-link{font-size:12px;line-height:1.6}
+.notice{padding:13px 15px}
+.validation{font-size:13px;line-height:1.55}
+.product-context-row{flex-wrap:wrap;gap:10px}
+.product-context-row strong{font-size:13px}
+.rate-verified{font-size:11px}
+.rate-band-row span{font-size:12px}
+.result-hero{padding:20px 21px}
+.result-label,.result-note,.result-tile span,.kpi span{font-size:12px;line-height:1.45}
+.result-number{font-size:clamp(27px,2.65vw,38px)}
+.result-tile strong{font-size:16px;line-height:1.35;overflow-wrap:anywhere}
+.result-tile{padding:13px}
+.chart-title{font-size:18px;line-height:1.35}
+.ffg-chart-help,.ffg-chart-scrub-label,.ffg-legend-item,.ffg-chart-tooltip{font-size:12px}
+.ffg-series-toggle{min-height:35px;line-height:1.35}
+.market-table th,.market-table td,.data-table th,.data-table td{font-size:13px;line-height:1.55}
+.market-card h4{font-size:15px}.market-card p{font-size:13px}.market-card .perf{font-size:23px}
+.subtab{padding:11px 14px}
+.ffg-v08-summary{grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin-bottom:17px}
+.ffg-v08-summary[hidden]{display:none!important}
+.ffg-v09-summary-card{background:#192b31;border:1px solid #385653;border-radius:16px;padding:20px;min-height:115px;display:flex;flex-direction:column;justify-content:space-between;gap:17px;min-width:0}
+.ffg-v09-summary-card.primary{background:linear-gradient(115deg,#354235,#243b35);border-color:#a18b60;box-shadow:inset 0 1px 0 #ffffff12}
+.ffg-v09-metric-label{font-size:13px;font-weight:720;color:#acbeb6;letter-spacing:.005em;line-height:1.4}
+.ffg-v09-metric-value{font-size:clamp(20px,1.9vw,29px);font-weight:800;line-height:1.1;letter-spacing:-.035em;font-variant-numeric:tabular-nums;color:#f1f6ed;overflow-wrap:anywhere}
+.ffg-v09-summary-card.primary .ffg-v09-metric-label{color:#f0d7a3}
+.ffg-v09-summary-card.primary .ffg-v09-metric-value{color:#ffdf9f}
+.ffg-v09-context{font-size:13px;color:#9fbcb2;line-height:1.6;padding-left:12px;border-left:3px solid #b3945e;margin:0 0 17px}
+.ffg-v08-input-hint{display:none}
+.ffg-v08-advanced>summary,.ffg-v08-result-details>summary{font-size:14px;min-height:48px;padding:14px 15px}
+.ffg-v08-advanced-count{font-size:12px}
+.ffg-v08-advanced-grid{gap:15px;padding:17px}
+.ffg-v08-viz-toggle{margin-bottom:9px}
+.ffg-v08-viz-button{font-size:14px;padding:10px 16px}
+.ffg-v08-series-table{font-size:14px}
+.ffg-v08-series-table th{font-size:12px;line-height:1.35}
+.ffg-v08-series-table td{font-size:13px;padding:11px 13px}
+.ffg-v08-breakdown p{font-size:12px}
+.ffg-v08-breakdown-row{font-size:14px;gap:11px}
+.ffg-v08-breakdown h4{font-size:16px}
+.ffg-v08-donut-core span{font-size:11px}.ffg-v08-donut-core strong{font-size:18px}
+.ffg-slider{margin-top:-3px}
+.ffg-slider-caption{font-size:11px;line-height:1.3;margin-bottom:3px}
+.ffg-slider-caption>span{display:none}
+.ffg-slider-caption output{font-size:12px;margin-left:auto}
+.ffg-slider-limits{font-size:11px}
+.ffg-v09-chart-controls{display:flex;align-items:center;gap:15px;justify-content:space-between;flex-wrap:wrap;margin:-4px 0 10px}
+.ffg-v09-export{font-size:12px;min-height:34px;padding:8px 12px;margin-left:auto}
+.ffg-v09-table-series{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.ffg-v09-table-series[hidden]{display:none!important}
+.ffg-v09-selector-title{font-size:12px;color:#acbeb4;margin-right:4px}
+.ffg-v09-series-button{display:inline-flex;align-items:center;gap:7px;background:#15262d;border:1px solid #526460;border-radius:9px;color:#8b9d97;min-height:34px;padding:6px 10px;font-size:12px;line-height:1.35;cursor:pointer;text-decoration:line-through;text-decoration-color:#697570}
+.ffg-v09-series-button.active{background:#29423e;border-color:#779088;color:#e5eee3;text-decoration:none}
+.ffg-v09-series-button:focus-visible{outline:2px solid #ebc585;outline-offset:2px}
+.ffg-v09-series-button i{display:inline-block;width:8px;height:8px;border-radius:50%;flex:none;opacity:.65}
+.ffg-v09-series-button.active i{opacity:1}
+.ffg-v09-risk-note{font-size:12px;color:#c9d9be;line-height:1.55;margin:5px 0 0}
+.ffg-v09-rules,.ffg-v09-providers{margin:0 0 14px;background:#182a2c;border:1px solid #405852;border-radius:12px;overflow:hidden}
+.ffg-v09-providers{margin:18px 0 0}
+.ffg-v09-rules>summary,.ffg-v09-providers>summary{padding:14px 17px;font-weight:710;font-size:14px;color:#e6c891;cursor:pointer;min-height:46px}
+.ffg-v09-rules>.notice{margin:0 15px 15px}
+.ffg-v09-providers>.card{margin:0;border:0;border-top:1px solid #405852;border-radius:0}
+@media(max-width:1260px){.calc-layout{grid-template-columns:1fr}.ffg-v09-summary-card{padding:19px}}
+@media(max-width:800px){.ffg-v08-summary{grid-template-columns:1fr 1fr}.ffg-v09-summary-card.primary{grid-column:1/-1}.ffg-v09-summary-card{min-height:100px}.form-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.content{padding:17px 13px 42px}.page-title{font-size:27px}.page-head .pill{display:none}.ffg-v08-summary{gap:9px}.ffg-v09-summary-card{padding:15px;min-height:102px}.ffg-v09-metric-value{font-size:21px}.ffg-v09-metric-label{font-size:12px}.calc-layout{gap:13px}.panel{padding:17px}.form-grid{grid-template-columns:1fr}.ffg-v08-advanced-grid{grid-template-columns:1fr}.ffg-v09-chart-controls{gap:10px}.chart-box{padding:16px 12px}.ffg-v08-donut-core strong{font-size:16px}.ffg-v08-breakdown-row{font-size:12px}}
+@media print{.ffg-v09-summary-card{box-shadow:none;border:1px solid #888;background:#fff!important}.ffg-v09-metric-label,.ffg-v09-metric-value{color:#111!important}.ffg-v09-chart-controls,.ffg-v09-providers,.ffg-v09-rules{display:none}.ffg-v09-context{color:#333}}

@@ -21,7 +21,7 @@
         min=minimum===null?-Infinity:Number(minimum),max=maximum===null?Infinity:Number(maximum);
       const ok=e.value.trim()!==''&&Number.isFinite(v)&&v>=min&&v<=max;
       e.setAttribute('aria-invalid',String(!ok));
-      if(!ok)errors.push(e.closest('.form-field')?.querySelector('label')?.textContent||id);
+      if(!ok)errors.push((e.closest('.form-field')?.querySelector('label')?.textContent||id).replace(/[.:\s]+$/,''));
     }
     return errors.length?'<div class="validation" role="alert"><b>Oprav vstupní údaje:</b> '+errors.map(safe).join(', ')+'.</div>':'';
   };
@@ -222,7 +222,7 @@
       const paid=Math.min(bal+charge,payment+extra);
       bal=maxZero(bal-(paid-charge));interest+=charge;total+=paid;
       if(m===fixMonths)atFix=bal;
-      if(bal<.001){paidOff=m;bal=0;}
+      if(bal<.001){paidOff=m;bal=0;if(m<fixMonths)atFix=0;}
       if(m%12===0){points.push(bal);interestPoints.push(interest);paidPoints.push(principal-bal);}
     }
     while(points.length<term+1){points.push(0);interestPoints.push(interest);paidPoints.push(principal);}
@@ -238,10 +238,12 @@
     const m=mortgageSchedule(principal,rate,after,years,fix,extra),
       stress=mortgageSchedule(principal,rate+2,after+2,years,fix,0),
       ltv=property>0?principal/property*100:null,
-      burden=income>0?(m.first+extra+other)/income*100:null,
+      firstOutflow=Math.min(m.first+extra,principal*(1+rate/1200)),
+      burden=income>0?(firstOutflow+other)/income*100:null,
       yearsPaid=Math.floor(m.paidOff/12),monthsPaid=m.paidOff%12;
-    $('mortgageResult').innerHTML=hero('První měsíční odtok na hypotéku',fmt(m.first+extra),'Anuitní splátka plus dobrovolná mimořádná platba každý měsíc.')+
-      '<div class="result-grid">'+metric('Splátka po fixaci (bez mimořádné)',fmt(m.second||0))+
+    const postFix=m.paidOff<=fix*12?'Úvěr splacen':fix>=years?'Fixace trvá do konce':fmt(m.second);
+    $('mortgageResult').innerHTML=hero('První měsíční platba včetně doplatku',fmt(firstOutflow),'Anuitní splátka a zvolený dobrovolný doplatek; v posledním měsíci maximálně zbývající dluh s úrokem.')+
+      '<div class="result-grid">'+metric('Splátka po fixaci (bez mimořádné)',postFix)+
       metric('Zůstatek po fixaci',fmt(m.atFix))+metric('Celkové úroky v modelu',fmt(m.interest))+
       metric('Celkem zaplaceno',fmt(m.total))+metric('LTV',ltv===null?'Doplň hodnotu nemovitosti':PCT(ltv))+
       metric('Splaceno za',yearsPaid+' let '+monthsPaid+' měs.')+
@@ -262,7 +264,8 @@
   window.calculateProtection=function(){
     const ids=['proDebt','proGap','proOtherIncome','proBenefits','proMonths','proOther','proReserve','proExisting'];
     const bad=required(ids);if(bad){$('protectionResult').innerHTML=bad;return;}
-    const debt=amount('proDebt'),monthlyNeed=amount('proGap'),others=amount('proOtherIncome'),
+    const risk=$('insProductType').value,temporary=risk.includes('Pracovní neschopnost');
+    const debt=temporary?0:amount('proDebt'),monthlyNeed=amount('proGap'),others=amount('proOtherIncome'),
       benefits=amount('proBenefits'),months=amount('proMonths'),oneOff=amount('proOther'),
       reserve=amount('proReserve'),existing=amount('proExisting');
     const shortfall=maxZero(monthlyNeed-others-benefits),gross=debt+oneOff+shortfall*months,
@@ -276,7 +279,8 @@
       '<div class="chart-box"><div class="chart-title">Struktura potřeby</div>'+
       barRows([{label:'Závazky',value:debt,text:fmt(debt)},{label:'Ztráta příjmu',value:shortfall*months,text:fmt(shortfall*months)},
         {label:'Další náklady',value:oneOff,text:fmt(oneOff)}])+'</div>'+
-      notification('Příjem jiné osoby, sociální dávky a stávající krytí bývají pro smrt, invaliditu a pracovní neschopnost odlišné. Zadané položky musí odpovídat právě řešenému riziku. Pojišťovny a produkty zde NEJSOU cenově porovnány a zvolená instituce nemění výsledek.')+
+      (temporary?notification('U pracovní neschopnosti se celý nesplacený dluh nezapočítává jako okamžitá potřeba: model počítá měsíční výpadek a jednorázové náklady. Splátky úvěrů promítni do měsíčních výdajů.'): '')+
+      notification('Měsíční potřeba představuje očekávané výdaje po události; od nich se odečtou příjmy, které skutečně zůstanou, a očekávané dávky. Nezadávej pouze ušlou mzdu, pokud již zahrnuje ostatní příjmy. Pojišťovna zde neurčuje cenu ani výši krytí.')+
       notification('Pro odborné nastavení ověř čekací a karenční dobu, definici invalidity a PN, výluky, progresi, limity plnění, indexaci, věk klienta, povolání a sport. Nejde o ocenění pojistného.');
   };
 

@@ -53,6 +53,7 @@
   </style>
   <link rel="stylesheet" href="./redesign-v06.css?v=8" />
   <link rel="stylesheet" href="./redesign-v08.css" />
+  <link rel="stylesheet" href="./redesign-v09.css" />
 </head>
 <body>
 <div class="app">
@@ -151,7 +152,7 @@
       </section>
 
       <section class="view hidden" id="view-savings">
-        <div class="page-head"><div><div class="eyebrow">Bankovní produkty</div><h1 class="page-title">Spoření a termínované vklady</h1><p class="page-sub">Nejprve vyber banku, potom její produkt a variantu podmínek. Sazby i pásma se přenesou do kalkulačky.</p></div><span class="pill">Ověřené veřejné podklady · 18. 11. 2026</span></div>
+        <div class="page-head"><div><div class="eyebrow">Bankovní produkty</div><h1 class="page-title">Spořicí účty a úročení vkladů</h1><p class="page-sub">Vyber banku a produkt. Kalkulačka doplní jeho sazbu i úroková pásma; pro jinou nabídku nastav vlastní sazbu.</p></div><span class="pill">Ověřené veřejné podklady · 18. 11. 2026</span></div>
         <div class="calc-layout"><div class="card panel"><h3>Parametry vkladu</h3><p class="panel-intro">Model předpokládá neměnnou sazbu po celou dobu a měsíční připisování. Skutečné bankovní podmínky se mohou lišit.</p><div class="form-grid">
           <div class="form-field"><label for="savingBank">1. Banka / instituce</label><select id="savingBank"><option>Načítám instituce…</option></select></div>
           <div class="form-field"><label for="savingProduct">2. Produkt a podmínky</label><select id="savingProduct"></select></div>
@@ -187,16 +188,16 @@
       <section class="view hidden" id="view-protection">
         <div class="page-head"><div><div class="eyebrow">Rizikové plánování</div><h1 class="page-title">Orientační potřeba pojistného krytí</h1><p class="page-sub">Model finanční mezery pro případ výpadku příjmu, smrti nebo jiného definovaného rizika.</p></div></div>
         <div class="calc-layout"><div class="card panel"><h3>Vstupní parametry</h3><p class="panel-intro">Zadej závazky a finanční potřeby domácnosti.</p><div class="form-grid">
-          <div class="form-field full"><label>Pojišťovna / produkt k následnému porovnání</label><select id="insurerSelect"><option>Kooperativa</option><option>NN Životní pojišťovna</option><option>Allianz</option><option>Generali Česká pojišťovna</option><option>UNIQA</option><option>ČSOB Pojišťovna</option><option>MetLife</option><option>Simplea</option><option>ČPP</option><option>Direct pojišťovna</option><option>Jiná pojišťovna</option></select></div>
-          <div class="form-field full"><label>Typ řešeného pojištění</label><select id="insProductType"><option>Rizikové životní pojištění</option><option>Smrt / zajištění rodiny</option><option>Invalidita I., II. a III. stupně</option><option>Pracovní neschopnost</option><option>Závažná onemocnění</option><option>Trvalé následky úrazu</option><option>Odpovědnost v běžném občanském životě</option><option>Pojištění nemovitosti a domácnosti</option><option>Pojištění podnikatele / odpovědnosti</option></select></div>
+          <div class="form-field full"><label>Pojišťovna k následnému prověření (neovlivní výpočet)</label><select id="insurerSelect"><option>Kooperativa</option><option>NN Životní pojišťovna</option><option>Allianz</option><option>Generali Česká pojišťovna</option><option>UNIQA</option><option>ČSOB Pojišťovna</option><option>MetLife</option><option>Simplea</option><option>ČPP</option><option>Direct pojišťovna</option><option>Jiná pojišťovna</option></select></div>
+          <div class="form-field full"><label>Riziko, pro které počítám potřebu</label><select id="insProductType"><option>Smrt / zajištění rodiny</option><option>Invalidita I., II. a III. stupně</option><option>Pracovní neschopnost</option></select></div>
           <div class="form-field"><label>Dluhy a hypotéky</label><div class="input-suffix"><input id="proDebt" type="number" min="0" value="2500000"><span>Kč</span></div></div>
-          <div class="form-field"><label>Měsíční výpadek příjmu</label><div class="input-suffix"><input id="proGap" type="number" min="0" value="25000"><span>Kč</span></div></div>
-          <div class="form-field"><label>Další čistý příjem domácnosti / měs.</label><div class="input-suffix"><input id="proOtherIncome" type="number" min="0" value="10000"><span>Kč</span></div></div>
-          <div class="form-field"><label>Očekávané dávky / měsíční příjmy po události</label><div class="input-suffix"><input id="proBenefits" type="number" min="0" value="5000"><span>Kč</span></div></div>
+          <div class="form-field"><label>Potřebné měsíční výdaje po události</label><div class="input-suffix"><input id="proGap" type="number" min="0" value="25000"><span>Kč</span></div></div>
+          <div class="form-field"><label>Zachované příjmy domácnosti / měs.</label><div class="input-suffix"><input id="proOtherIncome" type="number" min="0" value="0"><span>Kč</span></div></div>
+          <div class="form-field"><label>Očekávané dávky po události / měs.</label><div class="input-suffix"><input id="proBenefits" type="number" min="0" value="0"><span>Kč</span></div></div>
           <div class="form-field"><label>Počet měsíců krytí</label><div class="input-suffix"><input id="proMonths" type="number" min="0" max="600" value="36"><span>měs.</span></div></div>
-          <div class="form-field"><label>Další jednorázová potřeba</label><div class="input-suffix"><input id="proOther" type="number" min="0" value="300000"><span>Kč</span></div></div>
+          <div class="form-field"><label>Další jednorázová potřeba</label><div class="input-suffix"><input id="proOther" type="number" min="0" value="0"><span>Kč</span></div></div>
           <div class="form-field"><label>Finanční rezerva</label><div class="input-suffix"><input id="proReserve" type="number" min="0" value="300000"><span>Kč</span></div></div>
-          <div class="form-field"><label>Stávající pojistné krytí</label><div class="input-suffix"><input id="proExisting" type="number" min="0" value="500000"><span>Kč</span></div></div>
+          <div class="form-field"><label>Stávající pojistné krytí</label><div class="input-suffix"><input id="proExisting" type="number" min="0" value="0"><span>Kč</span></div></div>
         </div><button class="btn" style="margin-top:14px" onclick="calculateProtection()">Vypočítat finanční mezeru</button><p class="footnote">Nejde o doporučenou pojistnou částku. Je třeba vyhodnotit příjmy, dávky, rodinnou situaci, výluky, pojistitelnost a konkrétní produktové podmínky.</p></div><div class="card panel"><div id="protectionResult"></div></div></div>
       </section>
 
@@ -444,5 +445,6 @@ if('serviceWorker' in navigator && location.protocol.startsWith('http')){window.
 <script src="./range-controls-v07.js"></script>
 <script src="./workspace-v06.js?v=8"></script>
 <script src="./workspace-v08.js"></script>
+<script src="./workspace-v09.js"></script>
 </body>
 </html>
