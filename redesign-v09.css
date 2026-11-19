@@ -89,3 +89,9 @@ body{font-size:15px;line-height:1.56}
 @media(max-width:800px){.ffg-v08-summary{grid-template-columns:1fr 1fr}.ffg-v09-summary-card.primary{grid-column:1/-1}.ffg-v09-summary-card{min-height:100px}.form-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.content{padding:17px 13px 42px}.page-title{font-size:27px}.page-head .pill{display:none}.ffg-v08-summary{gap:9px}.ffg-v09-summary-card{padding:15px;min-height:102px}.ffg-v09-metric-value{font-size:21px}.ffg-v09-metric-label{font-size:12px}.calc-layout{gap:13px}.panel{padding:17px}.form-grid{grid-template-columns:1fr}.ffg-v08-advanced-grid{grid-template-columns:1fr}.ffg-v09-chart-controls{gap:10px}.chart-box{padding:16px 12px}.ffg-v08-donut-core strong{font-size:16px}.ffg-v08-breakdown-row{font-size:12px}}
 @media print{.ffg-v09-summary-card{box-shadow:none;border:1px solid #888;background:#fff!important}.ffg-v09-metric-label,.ffg-v09-metric-value{color:#111!important}.ffg-v09-chart-controls,.ffg-v09-providers,.ffg-v09-rules{display:none}.ffg-v09-context{color:#333}}
+.form-field[hidden]{display:none!important}
+.ffg-v10-product-context{grid-column:1/-1;display:flex;flex-direction:column;gap:6px;padding:14px 15px;background:#163530;border:1px solid #4b7566;border-left:3px solid #c5a669;border-radius:11px;color:#b7cdc1;font-size:12px;line-height:1.56;margin:-4px 0 4px}
+.ffg-v10-product-context strong{font-size:14px;font-weight:720;color:#f4dbab;line-height:1.4;font-variant-numeric:tabular-nums}
+.ffg-v10-product-context a{color:#f1d194;text-decoration:underline;text-underline-offset:3px;width:fit-content;font-weight:700}
+.ffg-v10-fund-field{grid-column:1/-1}
+@media print{.ffg-v10-product-context{background:white;color:#222;border-color:#555}.ffg-v10-product-context strong,.ffg-v10-product-context a{color:#111}}

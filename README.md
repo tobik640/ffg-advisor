@@ -1,4 +1,4 @@
-# FFG Advisor · v0.9
+# FFG Advisor · v1.0
 
 Přehledná statická pracovní aplikace pro české finanční poradenství. Výpočty DPS,
 DIP, investic, vkladů, hypoték, potřeb pojistného krytí a porovnání variant,
@@ -18,10 +18,16 @@ na žádost vlastníka kompletně vyřazeny z uživatelského rozhraní a nasaze
 
 ## Vývoj
 
-Vývojový zdroj pro v0.9 je `index.html` a modulární soubory
+Vývojový zdroj pro v1.0 je `index.html` a modulární soubory
 `advisor-v05.js`, `charts-v05.js`, `workspace-v06.js`, `redesign-v06.css`,
 `rate-products-v07.js`, `range-controls-v07.js`, `workspace-v08.js`
-a `redesign-v08.css`, dále `workspace-v09.js` a `redesign-v09.css`.
+a `redesign-v08.css`, dále `workspace-v09.js`, `redesign-v09.css` a `product-binding-v10.js`.
+Modul v1.0 spojuje výběr instituce s fondem či ilustračním typem produktu.
+Každá změna výběru předvyplní scénářový výnos a náklady a okamžitě přepočítá
+výsledky. U investic a DIP nejde o skutečné úrokové sazby ani garantované
+podmínky společnosti. Bez doloženého sazebníku jsou náklady explicitně označeny
+jako ilustrační. U DPS je k vybraným ověřeným fondům připojen oficiální zdroj;
+výnos je i zde ilustrační a zjednodušený model nezahrnuje odměny ze zhodnocení.
 Redesign zachovává černo-zlatou identitu, ale používá tmavě petrolejovou pracovní plochu,
 kontrastní grafy, přehlednější vstupy a čitelnější výsledky. Obsahuje
 rychlou navigaci Ctrl/⌘+K a přepracovaný dashboard.
