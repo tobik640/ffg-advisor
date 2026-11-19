@@ -79,7 +79,9 @@
    values('dps',data.gross,data.fee);
    updateContext('dps','Model fondu: '+fmt(data.gross)+' hrubě · '+fmt(data.fee)+' náklady',
     (info.verified?'Název fondu je z oficiální nabídky. ':'Název strategie je ilustrativní, konkrétní fond není ověřen. ')+
-    'Výnos je pracovní scénář dle rizika, NE úrok nebo předpověď fondu. Náklad je model (u Allianz použito maximum správy z dokumentu); možná odměna ze zhodnocení v tomto zjednodušeném modelu není zahrnuta.',info.source);
+    'Výnos je pracovní scénář dle rizika, NE úrok nebo předpověď fondu. '+
+    (dpsCompany.value==='Allianz penzijní společnost'?'Použitý náklad odpovídá maximální správní úplatě uvedené v dokumentu Allianz. ':'Uvedený náklad je pouze ilustrační, nikoliv ověřený ceník vybraného fondu. ')+
+    'Případná odměna ze zhodnocení není zahrnuta.',info.source);
   }
   dpsCompany.addEventListener('change',renderPensionCompany);
   picker.addEventListener('change',applyPensionFund);
@@ -161,33 +163,37 @@
    const kind=known?invFundKind[Number(idx)]:(invPicker.value==='custom'?'custom':invPicker.value);
    const model=invModels[kind];
    if(!model){updateContext('investment','Vlastní scénář','Zvol typ modelu nebo konkrétní fond. Výnos a náklady teď určuje ruční zadání.');return;}
+   if(known && kind!=='realestate')invPicker.value=kind;
    // Do not auto-import a one-year performance, and NEVER treat bond YTM as
    // an investment return forecast.
    values('investment',model.gross,model.fee,model.entry);
    $('invScenario').value='custom';
    const meta=known?'Vybraný fond: '+known.name+'. '+known.period+': '+known.value+' (k '+known.date+'). Historická hodnota se do výpočtu NEPŘENÁŠÍ.':
       'Vybrán ilustrační typ investice; není to ceník společnosti ani doložený konkrétní produkt.';
+   if($('invFundMeta'))$('invFundMeta').textContent=known?
+     known.period+': '+known.value+' · stav k '+known.date+'. Historické údaje slouží jen k informaci, do výpočtu vstupují modelové předpoklady.':
+     'Zatím bez doloženého fondu této společnosti. Zobrazený typ portfolia je ilustrační scénář.';
    updateContext('investment','Pracovní předpoklady: '+fmt(model.gross)+' hrubě · '+fmt(model.fee)+' průběžně · '+fmt(model.entry)+' vstupně',
     meta+' Model výnosu vychází z třídy aktiva, nikoli ze jména poskytovatele. Ověř KID, skutečné náklady i dostupnost.',known?.url);
   }
   invProvider.addEventListener('change',()=>{
    updateFundOptions();
    const fund=fundPicker.value!=='';
-   invPicker.value=fund?'custom':(invPreferred[invProvider.value]||'custom');
+   invPicker.value=fund?(invFundKind[Number(fundPicker.value)]==='realestate'?'custom':invFundKind[Number(fundPicker.value)]):(invPreferred[invProvider.value]||'custom');
    applyInvestment();
   });
   invPicker.addEventListener('change',()=>{
    fundPicker.value='';applyInvestment();
   });
   fundPicker.addEventListener('change',()=>{
-   if(fundPicker.value!=='')invPicker.value='custom';
+   if(fundPicker.value!=='')invPicker.value=invFundKind[Number(fundPicker.value)]==='realestate'?'custom':invFundKind[Number(fundPicker.value)];
    applyInvestment();
   });
   ['invReturn','invFee','invEntryFee'].forEach(id=>$(id)?.addEventListener('input',()=>{
    invPicker.value='custom';fundPicker.value='';
    updateContext('investment','Ruční výnos a náklady','Upravený výnos je individuální scénář poradce; změna společnosti nebo modelu automaticky vyplní výchozí předpoklady.');
   }));
-  updateFundOptions();invPicker.value=fundPicker.value!==''?'custom':invPreferred[invProvider.value]||'custom';applyInvestment();
+  updateFundOptions();invPicker.value=fundPicker.value!==''?(invFundKind[Number(fundPicker.value)]==='realestate'?'custom':invFundKind[Number(fundPicker.value)]):invPreferred[invProvider.value]||'custom';applyInvestment();
  }
 
  // Avoid the previous false impression that a provider switch is a no-op.
@@ -197,6 +203,9 @@
   investment:'Změna společnosti vybere dostupný fond z katalogu, nebo ilustrační typ investice, a okamžitě přepočítá model.'
  };
  Object.entries(texts).forEach(([key,value])=>{const p=$('view-'+key)?.querySelector('.ffg-v09-context');if(p)p.textContent=value;});
+ const intro=$('view-investment')?.querySelector('.calc-layout .panel-intro');
+ if(intro)intro.textContent='Vyber společnost a fond nebo typ portfolia. Historické výsledky uvádíme jen pro informaci; dlouhodobý výnos je vždy samostatný scénář.';
  const side=$('sidebar')?.querySelector('.side-foot');if(side)side.textContent='FFG · FINANČNÍ NÁSTROJE · V1.0';
+ const foot=document.querySelector('.content > .footer-note');if(foot)foot.textContent=foot.textContent.replace('v0.9','v1.0');
  document.title='FFG Advisor · poradenské studio v1.0';
 })();
